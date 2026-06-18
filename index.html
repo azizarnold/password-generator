@@ -1,95 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<title>Hostking Password Generator</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free open-source password generator. Create strong, secure passwords instantly — no data sent to any server.">
+  <meta name="keywords" content="password generator, secure password, random password, free password tool">
+  <title>Password Generator — Hostking Open Source</title>
+  <link rel="stylesheet" href="assets/style.css">
 </head>
-
 <body>
 
-<div class="container">
+  <header class="site-header">
+    <div class="container">
+      <div class="header-inner">
+        <a href="https://www.hostking.host" class="brand" target="_blank" rel="noopener">
+          <span class="brand-name">Hostking</span>
+          <span class="brand-tag">Open Source</span>
+        </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
 
-<h1>Password Generator</h1>
+  <main class="main">
+    <div class="container">
 
-<p>Create a secure random password.</p>
+      <section class="hero">
+        <h1>Password Generator</h1>
+        <p class="hero-sub">Generate strong, secure passwords instantly. No data is sent to any server — everything runs in your browser.</p>
+      </section>
 
-<input
-type="text"
-id="password"
-readonly>
+      <div class="card generator-card">
 
-<button onclick="generatePassword()">
+        <div class="output-group">
+          <div class="output-wrapper">
+            <input
+              type="text"
+              id="passwordOutput"
+              class="password-output"
+              readonly
+              aria-label="Generated password"
+              placeholder="Click Generate to create a password">
+            <button class="btn-icon" id="toggleVisibility" title="Show / Hide password" aria-label="Toggle password visibility">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="eyeIcon">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+          <div class="strength-bar-wrap">
+            <div class="strength-bar" id="strengthBar"></div>
+          </div>
+          <div class="strength-label" id="strengthLabel" aria-live="polite"></div>
+        </div>
 
-Generate Password
+        <div class="options-grid">
 
-</button>
+          <div class="option-row">
+            <label for="lengthRange" class="option-label">
+              Password Length: <strong id="lengthDisplay">20</strong>
+            </label>
+            <input type="range" id="lengthRange" min="6" max="128" value="20" class="range-slider" aria-valuemin="6" aria-valuemax="128" aria-valuenow="20">
+          </div>
 
-<div class="options">
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" id="optUppercase" checked>
+              <span class="checkbox-custom"></span>
+              Uppercase (A–Z)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="optLowercase" checked>
+              <span class="checkbox-custom"></span>
+              Lowercase (a–z)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="optNumbers" checked>
+              <span class="checkbox-custom"></span>
+              Numbers (0–9)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="optSymbols" checked>
+              <span class="checkbox-custom"></span>
+              Symbols (!@#$%^&amp;*)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" id="optExcludeAmbiguous">
+              <span class="checkbox-custom"></span>
+              Exclude ambiguous (0, O, l, I, 1)
+            </label>
+          </div>
 
-<label>
+        </div>
 
-<input type="checkbox" id="uppercase" checked>
+        <div class="action-row">
+          <button class="btn btn-primary" id="generateBtn">Generate Password</button>
+          <button class="btn btn-secondary" id="copyBtn" disabled>Copy to Clipboard</button>
+        </div>
 
-Uppercase
+        <div id="copyToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+          ✅ Password copied!
+        </div>
 
-</label>
+      </div>
 
-<label>
+      <div class="card info-card">
+        <h2>Why use a password generator?</h2>
+        <p>Weak or reused passwords are one of the most common causes of account breaches. A randomly generated password with a mix of uppercase, lowercase, numbers and symbols is significantly harder to crack than a human-chosen word or phrase.</p>
+        <ul class="tips-list">
+          <li>Use a unique password for every account</li>
+          <li>Aim for at least 16 characters</li>
+          <li>Include symbols and numbers</li>
+          <li>Use a password manager to store them safely</li>
+          <li>Enable two-factor authentication where available</li>
+        </ul>
+        <h3>Where to use strong passwords</h3>
+        <ul class="tips-list">
+          <li>Web hosting control panels (DirectAdmin, cPanel, Plesk)</li>
+          <li>WordPress admin accounts</li>
+          <li>SSH and server logins</li>
+          <li>Database accounts (MySQL, MariaDB)</li>
+          <li>Business email accounts</li>
+          <li>Domain registrar accounts</li>
+          <li>VPS server root passwords</li>
+          <li>FTP and SFTP accounts</li>
+        </ul>
+      </div>
 
-<input type="checkbox" id="lowercase" checked>
+    </div>
+  </main>
 
-Lowercase
+  <footer class="site-footer">
+    <div class="container">
+      <p>This tool is open source and maintained by <strong>Hostking</strong>. No data is collected or stored.</p>
+      <div class="footer-links">
+        <a href="https://www.hostking.host" target="_blank" rel="noopener">🌍 hostking.host</a>
+        <a href="https://www.hostking.co.za" target="_blank" rel="noopener">🇿🇦 hostking.co.za</a>
+        <a href="https://www.hostking.ae" target="_blank" rel="noopener">🇦🇪 hostking.ae</a>
+      </div>
+      <p class="footer-license">Released under the <a href="LICENSE" rel="noopener">MIT License</a></p>
+    </div>
+  </footer>
 
-</label>
-
-<label>
-
-<input type="checkbox" id="numbers" checked>
-
-Numbers
-
-</label>
-
-<label>
-
-<input type="checkbox" id="symbols" checked>
-
-Symbols
-
-</label>
-
-</div>
-
-<label>
-
-Length
-
-<input
-type="range"
-min="8"
-max="64"
-value="20"
-id="length">
-
-<span id="lengthValue">20</span>
-
-</label>
-
-<button onclick="copyPassword()">
-
-Copy Password
-
-</button>
-
-</div>
-
-<script src="script.js"></script>
+  <script src="assets/script.js"></script>
 
 </body>
 </html>
