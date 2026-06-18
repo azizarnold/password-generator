@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<title>Hostking Password Generator</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Password Generator</h1>
+
+<p>Create a secure random password.</p>
+
+<input
+type="text"
+id="password"
+readonly>
+
+<button onclick="generatePassword()">
+
+Generate Password
+
+</button>
+
+<div class="options">
+
+<label>
+
+<input type="checkbox" id="uppercase" checked>
+
+Uppercase
+
+</label>
+
+<label>
+
+<input type="checkbox" id="lowercase" checked>
+
+Lowercase
+
+</label>
+
+<label>
+
+<input type="checkbox" id="numbers" checked>
+
+Numbers
+
+</label>
+
+<label>
+
+<input type="checkbox" id="symbols" checked>
+
+Symbols
+
+</label>
+
+</div>
+
+<label>
+
+Length
+
+<input
+type="range"
+min="8"
+max="64"
+value="20"
+id="length">
+
+<span id="lengthValue">20</span>
+
+</label>
+
+<button onclick="copyPassword()">
+
+Copy Password
+
+</button>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
